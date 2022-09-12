@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <tbody>
+      <tr>
+        <td rowspan=""></td>
+      </tr>
+    </tbody>
+
+    <script>
+      let pegawai = "ridwan";
+      let jabatan = "manager";
+      let status = "menikah";
+
+      if (jabatan == "manager") {
+        gapok = 15000000;
+      } else if (jabatan == "asisten manager") {
+        gapok = 10000000;
+      } else if (jabatan == "staff") {
+        gapok = 5000000;
+      } else {
+        gapok = 0;
+      }
+
+      tunjangan = (gapok * 15) / 100;
+      bpjs = (gapok * 10) / 100;
+      //   ternary
+      const tKeluarga = status == "menikah" ? (gapok * 20) / 100 : 0;
+      let total = tunjangan + bpjs + tKeluarga + gapok;
+
+      document.write(` 
+    <table border="1" cellspacing = "0" cellpadding = "6">
+      <thead>
+        <tr>
+          <th>Pegawai</th>
+          <th>Jabatan</th>
+          <th>Status</th>
+          <th>Keterangan Gaji</th>
+          <th>Nominal</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td rowspan ="4" >${pegawai}</td>
+          <td rowspan ="4" >${jabatan}</td>
+          <td rowspan ="4" >${status}</td>
+          <td>Gaji Pokok</td>
+          <td>${gapok}</td>
+        </tr>
+        <tr>
+          <td>Tunjangan Pegawai</td>
+          <td>${tunjangan}</td>
+        </tr>
+        <tr>
+          <td>BPJS</td>
+          <td>${bpjs}</td>
+        </tr>
+        <tr>
+          <td>Tunjangan Keluarga</td>
+          <td>${tKeluarga}</td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <th colspan="4">Total</th>
+          <th>${total}</th>
+        </tr>
+      </tfoot>
+    </table>`);
+    </script>
+  </body>
+</html>
