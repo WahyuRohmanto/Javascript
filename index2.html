@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <font face="arial" align="center"><h1>Table Pegawai</h1></font>
+
+    <table border="1" cellpadding="7" align="center" cellspacing="0">
+      <thead>
+        <tr align="center" bgcolor="CDF0EA">
+          <td>NO</td>
+          <td>NAMA</td>
+          <td>JABATAN</td>
+          <td>AGAMA</td>
+          <td>GAJI POKOK</td>
+          <td>TUNJANGAN JABATAN</td>
+          <td>TUNJANGAN KESEHATAN</td>
+          <td>GAJI KOTOR</td>
+          <td>ZAKAT PROFESI</td>
+          <td>TAKE HOME PAY</td>
+        </tr>
+      </thead>
+      <tbody>
+        <script>
+          let i;
+          let warna;
+
+          let jabatan = "Manager";
+
+          for (let i = 1; i <= 100; i++) {
+            if (i < 25) {
+              jabatan = "Manager";
+            } else if (i <= 50) {
+              jabatan = "Asisten Manager";
+            } else if (i <= 75) {
+              jabatan = "Supervisor";
+            } else {
+              jabatan = "Staff";
+            }
+
+            agama = "agama";
+            i % 2 == 1 ? (agama = "muslim") : (agama = "non muslim");
+
+            let gapok = 0;
+            switch (jabatan) {
+              case "Manager":
+                gapok = 15000000;
+                break;
+              case "Asisten Manager":
+                gapok = 10000000;
+                break;
+              case "Supervisor":
+                gapok = 7000000;
+                break;
+              case "Staff":
+                gapok = 4000000;
+                break;
+            }
+
+            let tJabatan = 0.2 * gapok;
+            let tKesehatan = 0.1 * gapok;
+            let gakot = gapok + tKesehatan + tJabatan;
+            let zakprof =
+              agama == "muslim" && gapok >= 7000000 ? gakot * 0.025 : 0;
+            let THP = gakot - zakprof;
+
+            warna = i % 2 == 1 ? "ECC5FB" : "FAF4B7";
+            document.write(`<tr align="center" bgcolor="${warna}" > 
+          <td>${i}</td>
+          <td>PEGAWAI ${i} </td>
+          <td>${jabatan}</td>
+          <td>${agama}</td>
+          <td>Rp ${gapok}</td>
+          <td>Rp ${tJabatan}</td>
+          <td>Rp ${tKesehatan}</td>
+          <td>Rp${gakot}</td>
+          <td>Rp${zakprof}</td>
+          <td>Rp${THP}</td>
+        </tr>`);
+          }
+        </script>
+      </tbody>
+    </table>
+  </body>
+</html>
