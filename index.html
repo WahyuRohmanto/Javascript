@@ -1,73 +1,88 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-  </head>
-  <body>
- 
-    <script>
-      let pegawai = "ridwan";
-      let jabatan = "manager";
-      let status = "menikah";
+<script language="javascript">
+  //array of object
+  let m1 = { nama: "Budi", nilai: 75 };
+  let m2 = { nama: "Bedu", nilai: 55 };
+  let m3 = { nama: "Dedi", nilai: 95 };
+  let m4 = { nama: "Dudi", nilai: 88 };
+  let m5 = { nama: "Deden", nilai: 25 };
+  let m6 = { nama: "Desi", nilai: 65 };
 
-      if (jabatan == "manager") {
-        gapok = 15000000;
-      } else if (jabatan == "asisten manager") {
-        gapok = 10000000;
-      } else if (jabatan == "staff") {
-        gapok = 5000000;
-      } else {
-        gapok = 0;
+  let mahasiswa = [m1, m2, m3, m4, m5, m6];
+  /*
+for(m of mahasiswa) {
+    let ket = ( m.nilai >= 60) ? "Lulus" : "Gagal";
+    document.write(`<br/>Nama : ${m.nama} - Nilai : ${m.nilai} - Keterangan : ${ket}`);
+}
+*/
+</script>
+<h3 align="center">Daftar Nilai Mahasiswa</h3>
+<table align="center" border="1" cellpadding="10">
+  <thead>
+    <tr bgcolor="tomato">
+      <th>NO</th>
+      <th>NAMA</th>
+      <th>NILAI</th>
+      <th>KETERANGAN</th>
+      <th>GRADE</th>
+      <th>PREDIKAT</th>
+    </tr>
+  </thead>
+  <tbody>
+    <script language="javascript">
+      let no = 1;
+
+      for (m of mahasiswa) {
+        //set kelulusan
+        let ket = m.nilai >= 60 ? "Lulus" : "Gagal";
+        //set grade A - E (if multi kondisi)
+        // A = 85 - 100, B = 75 - < 85 dst
+        if (m.nilai >= 85 && m.nilai <= 100) {
+          grade = "A";
+        } else if (m.nilai >= 75 && m.nilai < 85) {
+          grade = "B";
+        } else if (m.nilai >= 65 && m.nilai < 75) {
+          grade = "C";
+        } else if (m.nilai >= 55 && m.nilai < 65) {
+          grade = "D";
+        } else {
+          grade = "E";
+        }
+        //set predikat ( swtich case)
+        //A = Memuaskan, B=Bagus, C=Cukup, D=kurang, E=Buruk
+
+        switch (grade) {
+          case "A":
+            predikat = "Memuaskan";
+            break;
+          case "B":
+            predikat = "Bagus";
+            break;
+          case "C":
+            predikat = "Cukup";
+            break;
+          case "D":
+            predikat = "Kurang";
+            break;
+          case "E":
+            predikat = "Buruk";
+            break;
+
+          default:
+            break;
+        }
+
+        warna = no % 2 == 1 ? "EAE3D2" : "607EAA";
+
+        //set warna-warni baris ganjil & genap
+        document.write(`<tr bgcolor="${warna}" align="center">
+                        <td>${no++}</td>
+                        <td>${m.nama}</td>
+                        <td>${m.nilai}</td>
+                        <td>${ket}</td>
+                        <td>${grade}</td>
+                        <td>${predikat}</td>
+                    </tr>`);
       }
-
-      tunjangan = (gapok * 15) / 100;
-      bpjs = (gapok * 10) / 100;
-      //   ternary
-      const tKeluarga = status == "menikah" ? (gapok * 20) / 100 : 0;
-      let total = tunjangan + bpjs + tKeluarga + gapok;
-
-      document.write(` 
-    <table border="1" cellspacing = "0" cellpadding = "6">
-      <thead>
-        <tr>
-          <th>Pegawai</th>
-          <th>Jabatan</th>
-          <th>Status</th>
-          <th>Keterangan Gaji</th>
-          <th>Nominal</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td rowspan ="4" >${pegawai}</td>
-          <td rowspan ="4" >${jabatan}</td>
-          <td rowspan ="4" >${status}</td>
-          <td>Gaji Pokok</td>
-          <td>${gapok}</td>
-        </tr>
-        <tr>
-          <td>Tunjangan Pegawai</td>
-          <td>${tunjangan}</td>
-        </tr>
-        <tr>
-          <td>BPJS</td>
-          <td>${bpjs}</td>
-        </tr>
-        <tr>
-          <td>Tunjangan Keluarga</td>
-          <td>${tKeluarga}</td>
-        </tr>
-      </tbody>
-      <tfoot>
-        <tr>
-          <th colspan="4">Total</th>
-          <th>${total}</th>
-        </tr>
-      </tfoot>
-    </table>`);
     </script>
-  </body>
-</html>
+  </tbody>
+</table>
