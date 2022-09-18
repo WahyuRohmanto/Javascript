@@ -105,7 +105,7 @@ function konversiKurs () {
     //valuta asing
     let vAsing =  document.getElementById("frm").valas.value;
     let input = "Valuta Asing :" + " " + vAsing 
-    let total =  "Total Bayar :" + " " + "$" + vAsing / (hBarang * jBarang);
+    let total =  "Total Bayar :" + " " +  vAsing / (hBarang * jBarang);
     document.getElementById("valuta").innerHTML = input;
     // total
     document.getElementById("total").innerHTML = total;
