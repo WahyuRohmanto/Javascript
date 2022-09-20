@@ -4,70 +4,91 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT"
+      crossorigin="anonymous"
+    />
     <title>Document</title>
   </head>
   <body>
- 
-    <script>
-      let pegawai = "ridwan";
-      let jabatan = "manager";
-      let status = "menikah";
+    <div class="container p-5">
+      <table class="table table-bordered text-center">
+        <thead>
+          <tr>
+            <th colspan="4">GEMPA</th>
+          </tr>
 
-      if (jabatan == "manager") {
-        gapok = 15000000;
-      } else if (jabatan == "asisten manager") {
-        gapok = 10000000;
-      } else if (jabatan == "staff") {
-        gapok = 5000000;
-      } else {
-        gapok = 0;
-      }
+          <tr>
+            <th>No</th>
+            <th>Lokasi</th>
+            <th>Skala</th>
+            <th>Dampak</th>
+          </tr>
+        </thead>
+        <tbody id="isi"></tbody>
 
-      tunjangan = (gapok * 15) / 100;
-      bpjs = (gapok * 10) / 100;
-      //   ternary
-      const tKeluarga = status == "menikah" ? (gapok * 20) / 100 : 0;
-      let total = tunjangan + bpjs + tKeluarga + gapok;
+        <script>
+          class Gempa {
+            constructor(nomor, lokasi, skala) {
+              this.lokasi = lokasi;
+              this.skala = skala;
+              this.nomor = nomor;
+            }
+            Dampak() {
+              if (this.skala <= 2) this.dampak = "Tidak Terasa";
+              else if (this.skala > 2 && this.skala <= 4)
+                this.dampak = "Bangunan Retak Retak";
+              else if (this.skala > 2 && this.skala <= 4)
+                this.dampak = "Bangunan Roboh";
+              else this.dampak = "Bangunan Roboh dan Berpotensi Tsunami";
 
-      document.write(` 
-    <table border="1" cellspacing = "0" cellpadding = "6">
-      <thead>
-        <tr>
-          <th>Pegawai</th>
-          <th>Jabatan</th>
-          <th>Status</th>
-          <th>Keterangan Gaji</th>
-          <th>Nominal</th>
+              return this.dampak;
+              return this.nomor++;
+            }
+
+            infoGempa() {
+              document.write(`
+         <tr>
+          <td>${this.nomor}</td>
+          <td>${this.lokasi}</td>
+          <td>${this.skala}</td>
+          <td>${this.Dampak()}</td>
         </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td rowspan ="4" >${pegawai}</td>
-          <td rowspan ="4" >${jabatan}</td>
-          <td rowspan ="4" >${status}</td>
-          <td>Gaji Pokok</td>
-          <td>${gapok}</td>
-        </tr>
-        <tr>
-          <td>Tunjangan Pegawai</td>
-          <td>${tunjangan}</td>
-        </tr>
-        <tr>
-          <td>BPJS</td>
-          <td>${bpjs}</td>
-        </tr>
-        <tr>
-          <td>Tunjangan Keluarga</td>
-          <td>${tKeluarga}</td>
-        </tr>
-      </tbody>
-      <tfoot>
-        <tr>
-          <th colspan="4">Total</th>
-          <th>${total}</th>
-        </tr>
-      </tfoot>
-    </table>`);
-    </script>
+         `);
+            }
+          }
+
+          q1 = new Gempa(1, "Jakarta", Math.floor(Math.random() * 10) + 1);
+          q2 = new Gempa(2, "Amerika", Math.floor(Math.random() * 10) + 1);
+          q3 = new Gempa(3, "India", Math.floor(Math.random() * 10) + 1);
+          q4 = new Gempa(4, "Sumatera", Math.floor(Math.random() * 10) + 1);
+          q5 = new Gempa(5, "Palembang", Math.floor(Math.random() * 10) + 1);
+          q6 = new Gempa(6, "Aceh", Math.floor(Math.random() * 10) + 1);
+          q7 = new Gempa(7, "Los Angeles", Math.floor(Math.random() * 10) + 1);
+          q8 = new Gempa(8, "Myanmar", Math.floor(Math.random() * 10) + 1);
+          q9 = new Gempa(9, "Malaysia", Math.floor(Math.random() * 10) + 1);
+          q10 = new Gempa(10, "Papua", Math.floor(Math.random() * 10) + 1);
+
+          q1.infoGempa();
+          q2.infoGempa();
+          q3.infoGempa();
+          q4.infoGempa();
+          q5.infoGempa();
+          q6.infoGempa();
+          q7.infoGempa();
+          q8.infoGempa();
+          q9.infoGempa();
+          q10.infoGempa();
+        </script>
+      </table>
+    </div>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+      crossorigin="anonymous"
+    ></script>
   </body>
 </html>
